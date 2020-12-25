@@ -6,11 +6,10 @@ class Main {
 
     double[][] d = {
       {1}, 
-      {3}, 
-      {5},
-      {6},
-      {4},
-      {0}
+      {4}, 
+      {16},
+      {25},
+      {49}
     };
 
     double[][] data = Functions.scaler(d);
@@ -24,7 +23,7 @@ class Main {
 
     } */
 
-    double[] testY = {2, 4, 6, 7, 5, 1};
+    double[] testY = {1, 2, 4, 5, 7};
     double[] y = Functions.scaler(testY);
     
     Dense[] denses = {
@@ -39,30 +38,30 @@ class Main {
     
     Sequential nn = new Sequential(denses);
 
-    System.out.println("Graph:");
+    //System.out.println("Graph:");
     
     String[] metrics = {"accuracy"};
-    nn.compile(1, "mse", metrics);
+    nn.compile(0.1, "mse", metrics);
     
-    double[][] toPredictpre = {{4}};
+    /* double[][] toPredictpre = {{10, 9}};
     
     double[] predictionpre = nn.predict(toPredictpre);
     
     for (double pr : predictionpre) {
       
-      System.out.println("Prediction: " + pr * Functions.yMax);
+      System.out.println("Prediction: " + (int)(pr * Functions.yMax));
       
-    }
+    } */
 
-    nn.fit(data, y, 10);
+    nn.fit(data, y, 30);
     
-    double[][] toPredict = {{4}};
+    double[][] toPredict = {{9}};
     
     double[] prediction = nn.predict(toPredict);
     
     for (double pr : prediction) {
       
-      System.out.println("Prediction: " + pr * Functions.yMax);
+      System.out.println("Prediction: " + (int)(pr * Functions.yMax));
       
     }
 

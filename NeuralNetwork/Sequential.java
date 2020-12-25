@@ -82,8 +82,9 @@ class Sequential {
         for (int j=0;j<previousNodes;++j) {
 
           try {
-
-            weights[connections[layer][i]][connections[layer-1][j]] = Math.random() * 10;
+            
+            weights[connections[layer][i]][connections[layer-1][j]] = 0;
+            //weights[connections[layer][i]][connections[layer-1][j]] = Math.random();
             weights[connections[layer-1][j]][connections[layer][i]] = weights[connections[layer][i]][connections[layer-1][j]];
 
             biases[layer][i] = 0;
